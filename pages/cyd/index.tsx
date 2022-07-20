@@ -1,6 +1,7 @@
 // Layouts
 import { MainLayout } from "../../components/templates";
 // Components
+import { Fieldset } from "../../components/Form/Fieldset";
 import { Input } from "../../components/Form/Input";
 import { RadioButton } from "../../components/Form/RadioButton";
 import { Select } from "../../components/Form/Select";
@@ -13,9 +14,8 @@ const CyDPage = () => {
       <h1 className="text-3xl font-bold text-center my-5">
         Crecimiento y Desarrollo
       </h1>
-      <form>
-        <fieldset className="my-5">
-          <legend className="text-gray-600">Sexo</legend>
+      <form className="px-4">
+        <Fieldset required legend="1. Sexo">
           <RadioButton
             label="Masculino"
             name="gender"
@@ -28,9 +28,8 @@ const CyDPage = () => {
             id="female"
             value="femenino"
           />
-        </fieldset>
-        <fieldset className="my-5">
-          <legend className="text-gray-600">Edad</legend>
+        </Fieldset>
+        <Fieldset required legend=" 2. Edad">
           <div className="flex items-center">
             <Select
               selectFirst
@@ -48,12 +47,11 @@ const CyDPage = () => {
               options={MONTHS}
             />
           </div>
-        </fieldset>
-        <fieldset className="my-5">
-          <legend className="text-gray-600">Acompañante</legend>
+        </Fieldset>
+        <Fieldset required legend="3. Acompañante">
           <Input id="guardianName" label="Nombre" />
           <Input id="guardianRelationship" label="Parentesco" />
-        </fieldset>
+        </Fieldset>
       </form>
     </MainLayout>
   );
