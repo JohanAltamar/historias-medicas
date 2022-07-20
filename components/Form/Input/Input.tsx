@@ -25,7 +25,7 @@ export const Input: FC<InputProps> = ({
         type="text"
         id={id}
         name={name}
-        className="rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+        className="rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 disabled:bg-gray-300"
         {...props}
       />
       <span className="ml-2">{afterInput}</span>

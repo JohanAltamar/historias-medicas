@@ -10,6 +10,7 @@ import { Textarea } from "../../components/Form/Textarea";
 import { MONTHS, YEARS } from "../../constants";
 import { Checkbox } from "../../components/Form/Checkbox/Checkbox";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 const initialFormData = {
   sexo: "masculino",
@@ -30,6 +31,9 @@ const initialFormData = {
   vivecon: "",
   mascotas: true,
   justificacionMascotas: "",
+  relacionFamiliar: true,
+  signosViolencia: false,
+  faltaPadres: false,
   escuela: "no",
   covidContacto: false,
   antecedentesPatologicos: "",
@@ -38,15 +42,14 @@ const initialFormData = {
   antecedentesAlergicos: "",
   antecedentesFamiliares: "",
   antecedentesHospitalarios: "",
+  antecedentesPsiquiatricosPadres: "",
+  antecedentesSuicidiosFamilia: "",
+  desparasitacion: "",
+  citaOdontologia: "",
 };
 
 const CyDPage = () => {
   const [formData, setFormData] = useState(initialFormData);
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    console.log(formData);
-  };
 
   const handleInputChange = (
     ev: React.ChangeEvent<
@@ -58,6 +61,11 @@ const CyDPage = () => {
 
   const handleCheckboxChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [ev.target.name]: ev.target.checked });
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    console.log(formData);
   };
 
   return (
@@ -241,6 +249,30 @@ const CyDPage = () => {
               onChange={handleInputChange}
             />
           )}
+          <Checkbox
+            label="Adecuada relación familiar"
+            name="relacionLaboral"
+            id="relacionLaboral"
+            value="relacionLaboral"
+            onChange={handleCheckboxChange}
+            checked={formData.relacionFamiliar}
+          />
+          <Checkbox
+            label="Hay signos de maltrato, violencia física, negligencia"
+            name="signosViolencia"
+            id="signosViolencia"
+            value="signosViolencia"
+            onChange={handleCheckboxChange}
+            checked={formData.signosViolencia}
+          />
+          <Checkbox
+            label="Pérdida o divorcio de los padres"
+            name="faltaPadres"
+            id="faltaPadres"
+            value="faltaPadres"
+            onChange={handleCheckboxChange}
+            checked={formData.faltaPadres}
+          />
         </Fieldset>
         <Fieldset required legend="10. Escolarización">
           <RadioButton
@@ -334,6 +366,42 @@ const CyDPage = () => {
             label="Hospitalarios"
             onChange={handleInputChange}
             value={formData.antecedentesHospitalarios}
+          />
+          <Textarea
+            className="w-full mt-2"
+            id="antecedentesPsiquiatricosPadres"
+            name="antecedentesPsiquiatricosPadres"
+            label="Psiquiatricos de los Padres"
+            onChange={handleInputChange}
+            value={formData.antecedentesPsiquiatricosPadres}
+          />
+          <Textarea
+            className="w-full mt-2"
+            id="antecedentesSuicidiosFamilia"
+            name="antecedentesSuicidiosFamilia"
+            label="Suicidios en la Familia"
+            onChange={handleInputChange}
+            value={formData.antecedentesSuicidiosFamilia}
+          />
+        </Fieldset>
+        <Fieldset legend="13. Otros">
+          <Input
+            label="Última dosis antiparasitario"
+            id="desparasitacion"
+            name="desparasitacion"
+            value={formData.desparasitacion}
+            onChange={handleInputChange}
+            type="date"
+            disabled={formData.anosEdad === "0"}
+          />
+          <Input
+            label="Última cita con odontología"
+            id="citaOdontologia"
+            name="citaOdontologia"
+            value={formData.citaOdontologia}
+            onChange={handleInputChange}
+            type="date"
+            disabled={formData.anosEdad === "0"}
           />
         </Fieldset>
         <button
