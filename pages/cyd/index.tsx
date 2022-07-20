@@ -1,6 +1,7 @@
 // Layouts
 import { MainLayout } from "../../components/templates";
 // Components
+import { Input } from "../../components/Form/Input";
 import { RadioButton } from "../../components/Form/RadioButton";
 import { Select } from "../../components/Form/Select";
 // Constants
@@ -17,18 +18,18 @@ const CyDPage = () => {
           <legend className="text-gray-600">Sexo</legend>
           <RadioButton
             label="Masculino"
-            name="sex"
+            name="gender"
             id="male"
             value="masculino"
           />
           <RadioButton
             label="Femenino"
-            name="sex"
+            name="gender"
             id="female"
             value="femenino"
           />
         </fieldset>
-        <fieldset>
+        <fieldset className="my-5">
           <legend className="text-gray-600">Edad</legend>
           <div className="flex items-center">
             <Select
@@ -47,6 +48,11 @@ const CyDPage = () => {
               options={MONTHS}
             />
           </div>
+        </fieldset>
+        <fieldset className="my-5">
+          <legend className="text-gray-600">Acompañante</legend>
+          <Input id="guardianName" label="Nombre" />
+          <Input id="guardianRelationship" label="Parentesco" />
         </fieldset>
       </form>
     </MainLayout>
