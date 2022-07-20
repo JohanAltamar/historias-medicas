@@ -1,5 +1,7 @@
-import Head from "next/head";
 import React, { FC } from "react";
+import Head from "next/head";
+// Components
+import { Navbar } from "../Navbar";
 
 export interface MainLayoutProps {
   children: React.ReactNode;
@@ -15,7 +17,9 @@ export const MainLayout: FC<MainLayoutProps> = ({
       <Head>
         <title>{title}</title>
       </Head>
-      {/* NAVBAR */}
+
+      <Navbar />
+
       <main>{children}</main>
     </>
   );
