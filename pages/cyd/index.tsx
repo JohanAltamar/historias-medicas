@@ -80,9 +80,111 @@ const CyDPage = () => {
           />
           <Input id="pcNacimiento" label="PC:" type="number" afterInput="cms" />
           <Checkbox
-            label="Requirió reanimación o UCI"
-            name="uciNacimiento"
-            id="uciNacimiento"
+            label="Requirió reanimación o UCIN"
+            name="ucinNacimiento"
+            id="ucinNacimiento"
+          />
+        </Fieldset>
+        <Fieldset required legend="7. Vacunación">
+          <Checkbox
+            label="PAI completo para la edad"
+            name="paiCompleto"
+            id="paiCompleto"
+          />
+          <Checkbox
+            label="Se verifica/trae carnet"
+            name="paiCarnet"
+            id="paiCarnet"
+          />
+        </Fieldset>
+        <Fieldset required legend="8. Alimentación">
+          <Textarea
+            className="w-full"
+            id="alimentacion"
+            name="alimentacion"
+            defaultValue="lactancia materna, comida del grupo familiar, carne, pollo, pescado, frutas, granos, verduras"
+          />
+        </Fieldset>
+        <Fieldset legend="9. Sociales">
+          <Checkbox
+            label="Presenta problemas de socialización"
+            name="problemasSociales"
+            id="problemasSociales"
+          />
+          <Textarea
+            className="w-full"
+            label="Vive con:"
+            id="vivecon"
+            name="vivecon"
+            placeholder="¿Con quién vive?"
+          />
+          <Checkbox label="Tiene mascotas" name="mascotas" id="mascotas" />
+          <Textarea
+            className="w-full mt-2"
+            id="justificacionMascotas"
+            name="justificacionMascotas"
+            placeholder="Si tiene mascotas, ¿Cuáles y cuántas?"
+          />
+        </Fieldset>
+        <Fieldset required legend="10. Escolarización">
+          <RadioButton label="SI" name="escuela" id="siEscuela" value="si" />
+          <RadioButton label="NO" name="escuela" id="noEscuela" value="no" />
+          <RadioButton
+            label="No Aplica"
+            name="escuela"
+            id="noAplicaEscuela"
+            value="no_aplica"
+          />
+          <Textarea
+            className="w-full mt-2"
+            id="justificacionEscuela"
+            name="justificacionEscuela"
+            placeholder="guardería desde que edad, colegio grado, etc."
+          />
+        </Fieldset>
+        <Fieldset required legend="11. COVID">
+          <Checkbox
+            label="Contacto estrecho con persona sospechosa o confirmada para covid-19 en los últimos 14 días"
+            name="covidContacto"
+            id="covidContacto"
+          />
+        </Fieldset>
+        <Fieldset required legend="12. Antecedentes">
+          <Textarea
+            className="w-full mt-2"
+            id="antecedentesPatologicos"
+            name="antecedentesPatologicos"
+            label="Patológicos"
+          />
+          <Textarea
+            className="w-full mt-2"
+            id="antecedentesQuirurgicos"
+            name="antecedentesQuirurgicos"
+            label="Quirúrgicos"
+          />
+          <Textarea
+            className="w-full mt-2"
+            id="antecedentesToxicologicos"
+            name="antecedentesToxicologicos"
+            label="Toxicológicos"
+          />
+          <Textarea
+            className="w-full mt-2"
+            id="antecedentesAlergicos"
+            name="antecedentesAlergicos"
+            label="Alérgicos"
+          />
+          <Textarea
+            className="w-full mt-2"
+            id="antecedentesFamiliares"
+            name="antecedentesFamiliares"
+            label="Familiares"
+          />
+          <Textarea
+            className="w-full mt-2"
+            id="antecedentesHospitalarios"
+            name="antecedentesHospitalarios"
+            label="Hospitalarios"
           />
         </Fieldset>
       </form>
