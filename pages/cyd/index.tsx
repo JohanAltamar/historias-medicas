@@ -65,7 +65,7 @@ const CyDPage = () => {
       <h1 className="text-3xl font-bold text-center my-5">
         Crecimiento y Desarrollo
       </h1>
-      <form className="px-4" onSubmit={handleSubmit}>
+      <form className="px-4 pb-4" onSubmit={handleSubmit}>
         <Fieldset required legend="1. Sexo">
           <RadioButton
             label="Masculino"
@@ -336,7 +336,12 @@ const CyDPage = () => {
             value={formData.antecedentesHospitalarios}
           />
         </Fieldset>
-        <button type="submit">Vista Previa</button>
+        <button
+          type="submit"
+          className="w-full bg-blue-400 text-gray-100 font-bold rounded p-2 hover:bg-blue-500 active:bg-blue-600 transition-all duration-200 sticky bottom-5"
+        >
+          Vista Previa
+        </button>
       </form>
     </MainLayout>
   );
