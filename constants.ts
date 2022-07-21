@@ -39,7 +39,8 @@ export const INITIAL_FORM_DATA = {
   mesesEdad: "0",
   nombreAcompanante: "",
   parentescoAcompanante: "",
-  informacionParto: "",
+  informacionParto:
+    "producto del 1mer embarazo, nació a termino por cesarea por RM. sin complicaciones durante embarazo y parto",
   hospitalizaciones: false,
   justificacionHospitalizaciones: "",
   pesoNacimiento: 0,
