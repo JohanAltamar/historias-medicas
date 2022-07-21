@@ -66,7 +66,7 @@ export const getEnfermedadActualText = (
 
   const tieneMascotasText = mascotas
     ? `, tiene mascotas (${justificacionMascotas})`
-    : "";
+    : ", no tiene mascotas";
 
   const buenaRelacionFamiliar = relacionFamiliar ? "" : "NO";
   const escolaridadText =
@@ -91,17 +91,25 @@ export const getEnfermedadActualText = (
 
   const ultimaCitaOdontologiaText = `${
     citaOdontologia && edadAnos !== "0"
-      ? "Ultima cita con odontologia hace " + citaOdontologia
+      ? "Ultima cita con odontologia " + citaOdontologia
       : "No ha tenido cita con odontologia"
   }`;
 
   const ultimaDesparasitacionText = `${
     desparasitacion && edadAnos !== "0"
-      ? "Ultima dosis de antiparasitario hace " + desparasitacion
+      ? "Ultima dosis de antiparasitario " + desparasitacion
       : "No ha tenido"
   }`;
 
-  const text = `Paciente ${sexo} de ${edad}, en compañía de su ${parentescoAcompanante} ${nombreAcompanante}, ${informacionParto}. Peso al nacer: ${pesoNacimiento} gramos, ${tallaNacimientoText}, ${pcNacimientoText}, ${ucinNacimientoText}. ${paiCompletoText}, ${paiCarnetText}. ${alimentacion}. ${problemasSocialesText}, ${vivecon}${tieneMascotasText}. Refiere ${parentescoAcompanante} ${buenaRelacionFamiliar} adecuada relación familiar, ${escolaridadText}. ${contactoCovid} contacto estrecho con persona sospechosa o confirmada para COVID-19 en los últimos 14 días. Antecedentes personales: - Patológicos: ${antecedentesPatologicosText}. - Quirúrgicos: ${antecedentesQuirurgicosText}. - Toxicológicos: ${antecedentesToxicologicosText}. - Alérgicos: ${antecedentesAlergicosText}. - Familiares: ${antecedentesFamiliaresText}. - Hospitalarios: ${antecedentesHospitalariosText}. ${ultimaDesparasitacionText}. ${ultimaCitaOdontologiaText}`;
+  const signosViolenciaText = signosViolencia
+    ? "XXXXXXXXXXXXXXXXX"
+    : "no hay signos de violencia física, maltrato o negligencia";
+
+  const faltaPadresText = faltaPadres
+    ? "Padres divorciados"
+    : "Niega falta o divorcio de los padres";
+
+  const text = `Paciente ${sexo} de ${edad}, en compañía de su ${parentescoAcompanante} ${nombreAcompanante}, ${informacionParto}. Peso al nacer: ${pesoNacimiento} gramos, ${tallaNacimientoText}, ${pcNacimientoText}, ${ucinNacimientoText}. ${paiCompletoText}, ${paiCarnetText}. ${alimentacion}. ${problemasSocialesText}, ${vivecon}${tieneMascotasText}. Refiere ${parentescoAcompanante} ${buenaRelacionFamiliar} adecuada relación familiar, ${signosViolenciaText}, ${faltaPadresText}, ${escolaridadText}. ${contactoCovid} contacto estrecho con persona sospechosa o confirmada para COVID-19 en los últimos 14 días. Antecedentes personales: - Patológicos: ${antecedentesPatologicosText}. - Quirúrgicos: ${antecedentesQuirurgicosText}. - Toxicológicos: ${antecedentesToxicologicosText}. - Alérgicos: ${antecedentesAlergicosText}. - Familiares: ${antecedentesFamiliaresText}. - Hospitalarios: ${antecedentesHospitalariosText}. ${ultimaDesparasitacionText}. ${ultimaCitaOdontologiaText}`;
 
   return text;
 };
