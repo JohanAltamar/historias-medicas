@@ -15,6 +15,7 @@ import { INITIAL_FORM_DATA, MONTHS, YEARS } from "../../constants";
 import { getEnfermedadActualText } from "../../utils";
 
 const CyDPage = () => {
+  const [copied, setCopied] = useState(false);
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
 
   const handleInputChange = (
@@ -35,8 +36,12 @@ const CyDPage = () => {
       title: "Enfermedad Actual",
       text: getEnfermedadActualText(formData),
       width: "90%",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Copiado!", "", "success");
+        navigator.clipboard.writeText(getEnfermedadActualText(formData));
+      }
     });
-    console.log(formData);
   };
 
   return (
