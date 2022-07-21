@@ -1,55 +1,21 @@
+import { useState } from "react";
+import Swal from "sweetalert2";
 // Layouts
 import { MainLayout } from "../../components/templates";
 // Components
+import { Checkbox } from "../../components/Form/Checkbox/Checkbox";
 import { Fieldset } from "../../components/Form/Fieldset";
 import { Input } from "../../components/Form/Input";
 import { RadioButton } from "../../components/Form/RadioButton";
 import { Select } from "../../components/Form/Select";
 import { Textarea } from "../../components/Form/Textarea";
 // Constants
-import { MONTHS, YEARS } from "../../constants";
-import { Checkbox } from "../../components/Form/Checkbox/Checkbox";
-import { useState } from "react";
-import Swal from "sweetalert2";
-
-const initialFormData = {
-  sexo: "masculino",
-  anosEdad: "0",
-  mesesEdad: "0",
-  nombreAcompanante: "",
-  parentescoAcompanante: "",
-  hospitalizaciones: false,
-  pesoNacimiento: 0,
-  tallaNacimiento: 0,
-  pcNacimiento: 0,
-  ucinNacimiento: false,
-  paiCompleto: true,
-  paiCarnet: true,
-  alimentacion:
-    "lactancia materna, comida del grupo familiar, carne, pollo, pescado, frutas, granos, verduras",
-  problemasSociales: false,
-  vivecon: "",
-  mascotas: true,
-  justificacionMascotas: "",
-  relacionFamiliar: true,
-  signosViolencia: false,
-  faltaPadres: false,
-  escuela: "no",
-  covidContacto: false,
-  antecedentesPatologicos: "",
-  antecedentesQuirurgicos: "",
-  antecedentesToxicologicos: "",
-  antecedentesAlergicos: "",
-  antecedentesFamiliares: "",
-  antecedentesHospitalarios: "",
-  antecedentesPsiquiatricosPadres: "",
-  antecedentesSuicidiosFamilia: "",
-  desparasitacion: "",
-  citaOdontologia: "",
-};
+import { INITIAL_FORM_DATA, MONTHS, YEARS } from "../../constants";
+// Utils
+import { getEnfermedadActualText } from "../../utils";
 
 const CyDPage = () => {
-  const [formData, setFormData] = useState(initialFormData);
+  const [formData, setFormData] = useState(INITIAL_FORM_DATA);
 
   const handleInputChange = (
     ev: React.ChangeEvent<
@@ -65,6 +31,11 @@ const CyDPage = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    Swal.fire({
+      title: "Enfermedad Actual",
+      text: getEnfermedadActualText(formData),
+      width: "90%",
+    });
     console.log(formData);
   };
 
@@ -129,7 +100,15 @@ const CyDPage = () => {
             value={formData.parentescoAcompanante}
           />
         </Fieldset>
-        <Fieldset legend="4. Información del parto">PENDIENTE</Fieldset>
+        <Fieldset legend="4. Información del parto">
+          <Textarea
+            className="w-full"
+            id="informacionParto"
+            name="informacionParto"
+            onChange={handleInputChange}
+            value={formData.informacionParto}
+          />
+        </Fieldset>
         <Fieldset required legend="5. Hospitalizaciones">
           <Checkbox
             label="SI"
@@ -391,7 +370,6 @@ const CyDPage = () => {
             name="desparasitacion"
             value={formData.desparasitacion}
             onChange={handleInputChange}
-            type="date"
             disabled={formData.anosEdad === "0"}
           />
           <Input
@@ -400,7 +378,6 @@ const CyDPage = () => {
             name="citaOdontologia"
             value={formData.citaOdontologia}
             onChange={handleInputChange}
-            type="date"
             disabled={formData.anosEdad === "0"}
           />
         </Fieldset>
