@@ -14,6 +14,7 @@ export const Navbar = () => {
       <ul className="h-full flex">
         <NavLink href="/general">General</NavLink>
         <NavLink href="/cyd">CyD</NavLink>
+        <NavLink href="/conceptos">Conceptos</NavLink>
       </ul>
     </nav>
   );
